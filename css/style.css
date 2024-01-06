@@ -13,7 +13,7 @@ body {
 }
 
 #container-tela-inicial {
-    display: block;
+    display: none;
 }
 
 #tela-inicial {
@@ -60,4 +60,35 @@ body {
 
 #tela-inicial button:hover {
     background-color: #025E73;
+}
+
+#container-tela-jogo {
+    display: block;
+}
+
+#tela-jogo {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#conteudo-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    width: 560px;
+}
+
+#p-jogador {
+    text-align: left;
+}
+
+#p-placar {
+    text-align: right;
+}
+
+#container-tela-jogo canvas {
+    margin-top: 15px;
+    background-color: #0a0c0d;
 }
