@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+body {
+    background-color: #011F26;
+    color: #f2f2f2;
+}
+
+#container-tela-inicial {
+    display: block;
+}
+
+#tela-inicial {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#tela-inicial h1{
+    margin-bottom: 20px;
+}
+
+#tela-inicial p {
+    min-height: 20px;
+    font-size: 16px;
+    animation: pular 1s infinite;
+    margin-bottom: 30px;
+}
+
+@keyframes pular {
+    0% {
+        font-size: 16px;;
+      }
+      50% {
+        font-size: 16.5px;
+      }
+      100% {
+        font-size: 16px;
+      }
+}
+
+#tela-inicial button {
+    font-size: 20px;
+    padding: 15px;
+    font-weight: bolder;
+    color: #f2f2f2;
+    background-color: #011f265d;
+    border: 2px solid #f2f2f2;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#tela-inicial button:hover {
+    background-color: #025E73;
+}
