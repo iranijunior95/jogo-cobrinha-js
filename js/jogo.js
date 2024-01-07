@@ -7,6 +7,8 @@ class Jogo {
         this.statusDoJogo = false;
         this.telaAtual = 'jogo';
         this.loopId
+        this.size = 28;
+        this.cobra = [{ x: 140, y: 140 }, { x: 168, y: 140 }];
 
         this.placar = body[1].children[0].children[0].children[1];
         this.ctx = body[1].children[0].children[1].getContext('2d');
@@ -58,8 +60,33 @@ class Jogo {
         }
     }
 
+    desenhaCobra() {
+        if(!this.statusDoJogo) return;
+
+        this.ctx.fillStyle = '#a5a6929d';
+
+        this.cobra.forEach((element, index) => {
+
+            if(index === this.cobra.length -1) {
+                this.ctx.fillStyle = '#025E73';
+            }
+
+            this.ctx.fillRect(element.x, element.y, this.size, this.size);
+
+        });
+    }
+
     loopJogo() {
+        if(!this.statusDoJogo) return;
+
+        clearInterval(this.loopId);
+        this.ctx.clearRect(0, 0, 560, 560);
+
         this.desenhaGrid();
-        console.log('vai iniciar');
+        this.desenhaCobra();
+
+        this.loopId = setTimeout(() => {
+            this.loopJogo();
+        }, 300);
     }
 }
