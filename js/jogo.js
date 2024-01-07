@@ -79,7 +79,8 @@ class Jogo {
     }
 
     gerarNovaFruta() {
-        this.fruta = [{ x: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28, y: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28}];
+        this.fruta.length = 0;
+        this.fruta.push({ x: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28, y: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28});
     }
 
     desenharFruta() {
@@ -117,6 +118,7 @@ class Jogo {
         this.cobra.shift();
         this.verificaColisaoBordas();
         this.verificarColisaoCobra();
+        this.verificarColisaoFruta();
     }
 
     mudarDirecao(direcao) {
@@ -179,6 +181,16 @@ class Jogo {
 
         if(colisao) {
             this.fimDeJogo();
+        }
+    }
+
+    verificarColisaoFruta() {
+        if(!this.statusDoJogo) return;
+
+        const cabecaCobra = this.cobra[this.cobra.length -1];
+
+        if(cabecaCobra.x == this.fruta[0].x && cabecaCobra.y == this.fruta[0].y) {
+            this.gerarNovaFruta();
         }
     }
 
