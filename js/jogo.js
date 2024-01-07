@@ -9,7 +9,8 @@ class Jogo {
         this.loopId
         this.direcao
         this.size = 28;
-        this.cobra = [{ x: 224, y: 224 }, { x: 252, y: 224 }, { x: 280, y: 224 }, { x: 308, y: 224 }, { x: 316, y: 224 }, { x: 344, y: 224 }];
+        this.cobra = [{ x: 140, y: 140 }, { x: 168, y: 140 }];
+        this.fruta = [{ x: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28, y: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28}];
 
         this.placar = body[1].children[0].children[0].children[1];
         this.ctx = body[1].children[0].children[1].getContext('2d');
@@ -75,6 +76,17 @@ class Jogo {
             this.ctx.fillRect(element.x, element.y, this.size, this.size);
 
         });
+    }
+
+    gerarNovaFruta() {
+        this.fruta = [{ x: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28, y: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28}];
+    }
+
+    desenharFruta() {
+        if(!this.statusDoJogo) return;
+
+        this.ctx.fillStyle = '#F2A71B';
+        this.ctx.fillRect(this.fruta[0].x, this.fruta[0].y, this.size, this.size);
     }
 
     moverCobra() {
@@ -187,6 +199,7 @@ class Jogo {
         this.desenhaGrid();
         this.moverCobra();
         this.desenhaCobra();
+        this.desenharFruta();
         
         this.loopId = setTimeout(() => {
             this.loopJogo();
