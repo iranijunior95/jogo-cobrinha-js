@@ -103,12 +103,39 @@ class Jogo {
         }
 
         this.cobra.shift();
+        this.verificaColisaoBordas();
     }
 
     mudarDirecao(direcao) {
         if(!this.statusDoJogo) return;
 
         this.direcao = direcao;
+    }
+
+    verificaColisaoBordas() {
+        if(!this.statusDoJogo) return;
+
+        const cabecaCobra = this.cobra[this.cobra.length -1];
+
+        if(cabecaCobra.x > 532) {
+            this.cobra.push({ x: 0, y: cabecaCobra.y });
+            this.cobra.shift();
+        }
+
+        if(cabecaCobra.x < 0 ) {
+            this.cobra.push({ x: 532, y: cabecaCobra.y });
+            this.cobra.shift();
+        }
+
+        if(cabecaCobra.y > 532) {
+            this.cobra.push({ x: cabecaCobra.x, y: 0 });
+            this.cobra.shift();
+        }
+
+        if(cabecaCobra.y < 0) {
+            this.cobra.push({ x: cabecaCobra.x, y: 532 });
+            this.cobra.shift();
+        }
     }
 
     loopJogo() {
@@ -118,9 +145,9 @@ class Jogo {
         this.ctx.clearRect(0, 0, 560, 560);
 
         this.desenhaGrid();
-        this.desenhaCobra();
         this.moverCobra();
-
+        this.desenhaCobra();
+        
         this.loopId = setTimeout(() => {
             this.loopJogo();
         }, 300);
