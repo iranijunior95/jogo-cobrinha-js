@@ -6,6 +6,7 @@ const jogo = new Jogo(body);
 
 btnStart.addEventListener('click', () => {
     jogo.selecionarEstadoDoJogo('jogo', true);
+    jogo.loopJogo();
 });
 
 btnsTelaGameOver[0].addEventListener('click', () => {

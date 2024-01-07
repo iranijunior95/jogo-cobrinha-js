@@ -4,11 +4,12 @@ class Jogo {
         this.telaJogo = body[1];
         this.telaGameOver = body[2];
 
-        this.statusDoJogo = true;
+        this.statusDoJogo = false;
         this.telaAtual = 'jogo';
+        this.loopId
 
         this.placar = body[1].children[0].children[0].children[1];
-        this.ctx = body[1].children[0].children[1];
+        this.ctx = body[1].children[0].children[1].getContext('2d');
     }
 
     selecionarEstadoDoJogo(tela, status) {
@@ -38,7 +39,27 @@ class Jogo {
         }
     }
 
-    test() {
-        
+    desenhaGrid() {
+        if(!this.statusDoJogo) return;
+
+        this.ctx.lineWidth = 1;
+        this.ctx.strokeStyle = '#bfb78fb2';
+
+        for (let index = 28; index < 560; index += 28) {
+            this.ctx.beginPath();
+            this.ctx.lineTo(index, 0);
+            this.ctx.lineTo(index, 560);
+            this.ctx.stroke();
+
+            this.ctx.beginPath();
+            this.ctx.lineTo(0, index);
+            this.ctx.lineTo(560, index);
+            this.ctx.stroke();
+        }
+    }
+
+    loopJogo() {
+        this.desenhaGrid();
+        console.log('vai iniciar');
     }
 }
