@@ -19,3 +19,24 @@ btnsTelaGameOver[1].addEventListener('click', () => {
 
 jogo.selecionarEstadoDoJogo('inicio', false);
 
+document.addEventListener('keydown', ({ key }) => {
+
+    switch (key) {
+        case 'ArrowRight':
+            jogo.mudarDirecao('direita');
+            break;
+        
+        case 'ArrowLeft':
+            jogo.mudarDirecao('esquerda');
+            break;
+
+        case 'ArrowDown':
+            jogo.mudarDirecao('baixo');
+            break;
+
+        case 'ArrowUp':
+            jogo.mudarDirecao('cima');
+            break;
+    }
+});
+

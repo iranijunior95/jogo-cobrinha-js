@@ -7,6 +7,7 @@ class Jogo {
         this.statusDoJogo = false;
         this.telaAtual = 'jogo';
         this.loopId
+        this.direcao
         this.size = 28;
         this.cobra = [{ x: 140, y: 140 }, { x: 168, y: 140 }];
 
@@ -63,7 +64,7 @@ class Jogo {
     desenhaCobra() {
         if(!this.statusDoJogo) return;
 
-        this.ctx.fillStyle = '#a5a6929d';
+        this.ctx.fillStyle = '#f2f2f2';
 
         this.cobra.forEach((element, index) => {
 
@@ -76,6 +77,40 @@ class Jogo {
         });
     }
 
+    moverCobra() {
+        if(!this.statusDoJogo) return;
+
+        if(!this.direcao) return;
+
+        const cabecaCobra = this.cobra[this.cobra.length -1];
+
+        switch (this.direcao) {
+            case "direita":
+                this.cobra.push({ x: cabecaCobra.x + this.size, y: cabecaCobra.y });
+                break;
+
+            case "esquerda":  
+                this.cobra.push({ x: cabecaCobra.x - this.size, y: cabecaCobra.y }); 
+                break;
+
+            case "baixo":
+                this.cobra.push({ x: cabecaCobra.x, y: cabecaCobra.y + this.size });
+                break;
+                    
+            case "cima":
+                this.cobra.push({ x: cabecaCobra.x, y: cabecaCobra.y - this.size });
+                break;
+        }
+
+        this.cobra.shift();
+    }
+
+    mudarDirecao(direcao) {
+        if(!this.statusDoJogo) return;
+
+        this.direcao = direcao;
+    }
+
     loopJogo() {
         if(!this.statusDoJogo) return;
 
@@ -84,6 +119,7 @@ class Jogo {
 
         this.desenhaGrid();
         this.desenhaCobra();
+        this.moverCobra();
 
         this.loopId = setTimeout(() => {
             this.loopJogo();
