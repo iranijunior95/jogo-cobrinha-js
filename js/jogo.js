@@ -9,7 +9,7 @@ class Jogo {
         this.loopId
         this.direcao
         this.size = 28;
-        this.cobra = [{ x: 140, y: 140 }, { x: 168, y: 140 }];
+        this.cobra = [{ x: 224, y: 224 }, { x: 252, y: 224 }, { x: 280, y: 224 }, { x: 308, y: 224 }, { x: 316, y: 224 }, { x: 344, y: 224 }];
 
         this.placar = body[1].children[0].children[0].children[1];
         this.ctx = body[1].children[0].children[1].getContext('2d');
@@ -104,6 +104,7 @@ class Jogo {
 
         this.cobra.shift();
         this.verificaColisaoBordas();
+        this.verificarColisaoCobra();
     }
 
     mudarDirecao(direcao) {
@@ -152,6 +153,29 @@ class Jogo {
             this.cobra.push({ x: cabecaCobra.x, y: 532 });
             this.cobra.shift();
         }
+    }
+
+    verificarColisaoCobra() {
+        if(!this.statusDoJogo) return;
+
+        const cabecaCobra = this.cobra[this.cobra.length -1];
+        const indexCabecaCobra = this.cobra.length -2;
+
+        const colisao = this.cobra.find((posicao, index) => {
+            return index < indexCabecaCobra && posicao.x == cabecaCobra.x && posicao.y == cabecaCobra.y;
+        });
+
+        if(colisao) {
+            this.fimDeJogo();
+        }
+    }
+
+    fimDeJogo() {
+        if(!this.statusDoJogo) return;
+        this.cobra.length = 0;
+        this.cobra.push({ x: 140, y: 140 }, { x: 168, y: 140 });
+        this.direcao = '';
+        this.selecionarEstadoDoJogo('game over', false);
     }
 
     loopJogo() {

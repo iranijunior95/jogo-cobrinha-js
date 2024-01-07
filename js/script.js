@@ -15,6 +15,7 @@ btnsTelaGameOver[0].addEventListener('click', () => {
 
 btnsTelaGameOver[1].addEventListener('click', () => {
     jogo.selecionarEstadoDoJogo('jogo', true);
+    jogo.loopJogo();
 });
 
 jogo.selecionarEstadoDoJogo('inicio', false);
