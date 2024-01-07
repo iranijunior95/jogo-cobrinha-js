@@ -109,7 +109,23 @@ class Jogo {
     mudarDirecao(direcao) {
         if(!this.statusDoJogo) return;
 
-        this.direcao = direcao;
+        if(this.direcao == 'direita' && direcao == 'esquerda') {
+            return;
+        }
+
+        if(this.direcao == 'esquerda' && direcao == 'direita') {
+            return;
+        }
+
+        if(this.direcao == 'cima' && direcao == 'baixo') {
+            return;
+        }
+
+        if(this.direcao == 'baixo' && direcao == 'cima') {
+            return;
+        }
+
+        this.direcao = direcao; 
     }
 
     verificaColisaoBordas() {
