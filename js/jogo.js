@@ -191,6 +191,7 @@ class Jogo {
 
         if(cabecaCobra.x == this.fruta[0].x && cabecaCobra.y == this.fruta[0].y) {
             this.gerarNovaFruta();
+            this.cobra.push({ x: this.cobra[this.cobra.length -1].x, y: this.cobra[this.cobra.length -1].y });
         }
     }
 
