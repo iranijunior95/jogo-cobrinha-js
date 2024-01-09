@@ -180,7 +180,12 @@ class Jogo {
         });
 
         if(colisao) {
-            this.fimDeJogo();
+            this.direcao = '';
+
+            setTimeout(() => {
+                this.fimDeJogo();
+            }, 1000);
+            
         }
     }
 
@@ -192,7 +197,15 @@ class Jogo {
         if(cabecaCobra.x == this.fruta[0].x && cabecaCobra.y == this.fruta[0].y) {
             this.gerarNovaFruta();
             this.cobra.push({ x: this.cobra[this.cobra.length -1].x, y: this.cobra[this.cobra.length -1].y });
+            this.renderizaPlacar();
         }
+    }
+
+    renderizaPlacar() {
+        let pontos = +this.placar.innerHTML.split(' ')[0];
+        pontos = pontos + 10;
+
+        this.placar.innerHTML = `${pontos} pts`;
     }
 
     fimDeJogo() {
@@ -200,12 +213,12 @@ class Jogo {
         this.cobra.length = 0;
         this.cobra.push({ x: 140, y: 140 }, { x: 168, y: 140 });
         this.direcao = '';
+        this.placar.innerHTML = `00 pts`;
         this.selecionarEstadoDoJogo('game over', false);
     }
 
     loopJogo() {
         if(!this.statusDoJogo) return;
-
         clearInterval(this.loopId);
         this.ctx.clearRect(0, 0, 560, 560);
 
