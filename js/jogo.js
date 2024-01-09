@@ -6,8 +6,9 @@ class Jogo {
 
         this.statusDoJogo = false;
         this.telaAtual = 'jogo';
-        this.loopId
-        this.direcao
+        this.loopId;
+        this.direcao;
+        this.velocidade = 500;
         this.size = 28;
         this.cobra = [{ x: 140, y: 140 }, { x: 168, y: 140 }];
         this.fruta = [{ x: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28, y: Math.round(Math.round(Math.random() * (532 - 0) + 0) / 28) * 28}];
@@ -198,14 +199,40 @@ class Jogo {
             this.gerarNovaFruta();
             this.cobra.push({ x: this.cobra[this.cobra.length -1].x, y: this.cobra[this.cobra.length -1].y });
             this.renderizaPlacar();
+            this.aumentaDificuldade();
         }
     }
 
     renderizaPlacar() {
+        if(!this.statusDoJogo) return;
+
         let pontos = +this.placar.innerHTML.split(' ')[0];
         pontos = pontos + 10;
 
         this.placar.innerHTML = `${pontos} pts`;
+    }
+
+    aumentaDificuldade() {
+        if(!this.statusDoJogo) return;
+
+        let pontos = +this.placar.innerHTML.split(' ')[0];
+
+        if(pontos >= 50) {
+            this.velocidade = 400;
+        }
+
+        if(pontos >= 100) {
+            this.velocidade = 300;
+        }
+
+        if(pontos >= 150) {
+            this.velocidade = 200;
+        }
+
+        if(pontos >= 250) {
+            this.velocidade = 100;
+        }
+
     }
 
     fimDeJogo() {
@@ -213,6 +240,8 @@ class Jogo {
         this.cobra.length = 0;
         this.cobra.push({ x: 140, y: 140 }, { x: 168, y: 140 });
         this.direcao = '';
+        this.velocidade = 500;
+        this.telaGameOver.children[0].children[1].innerHTML = `Sua pontuação foi: ${+this.placar.innerHTML.split(' ')[0]} pts`;
         this.placar.innerHTML = `00 pts`;
         this.selecionarEstadoDoJogo('game over', false);
     }
@@ -229,6 +258,6 @@ class Jogo {
         
         this.loopId = setTimeout(() => {
             this.loopJogo();
-        }, 300);
+        }, this.velocidade);
     }
 }
