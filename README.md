@@ -31,3 +31,9 @@
 <p align="center">
   <img alt="telaJogo" title="#telaJogo" src="./img/jogo_cobrinha_tela_jogo.gif">
 </p>
+
+3 - Tela fim de jogo:
+
+<p align="center">
+  <img alt="telaFimJogo" title="#telaFimJogo" src="./img/jogo_cobrinha_tela_fim_de_jogo.gif">
+</p>
