@@ -37,3 +37,17 @@
 <p align="center">
   <img alt="telaFimJogo" title="#telaFimJogo" src="./img/jogo_cobrinha_tela_fim_de_jogo.gif">
 </p>
+
+### 🛠 Tecnologias
+
+- As seguintes ferramentas foram usadas na construção do projeto:
+
+- HTML
+- CSS
+- JAVASCRIPT
+
+### 📝 Licença
+
+- Fique a vontade para contribuir...
+
+- Feito com ❤️ por Irani Junior 👋🏽
