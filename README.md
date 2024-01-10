@@ -27,3 +27,7 @@
 </p>
 
 2 - Tela do jogo rodando:
+
+<p align="center">
+  <img alt="telaJogo" title="#telaJogo" src="./img/jogo_cobrinha_tela_jogo.gif">
+</p>
