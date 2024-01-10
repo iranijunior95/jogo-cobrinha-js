@@ -15,3 +15,15 @@
 3 – A cada X pontos feitos a movimentação da cobra tem um aumento de velocidade, aumentando assim a dificuldade do jogo.
 
 4 – Caso a cabeça da cobra encoste no seu próprio corpo a partida encerra.
+
+### 🎨 Layout
+
+- A baixo o design da aplicação em execução.
+
+1 - Tela inicial do jogo:
+
+<p align="center">
+  <img alt="telaInicial" title="#telaInicial" src="./img/jogo_cobrinha_tela_inicial.gif">
+</p>
+
+2 - Tela do jogo rodando:
